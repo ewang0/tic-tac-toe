@@ -1,7 +1,6 @@
 main {
   display: flex;
   justify-content: space-between;
-  background-color: black;
 }
 
 body{
@@ -17,8 +16,83 @@ body{
   align-items: center;
 }
 
-.game-section {
-  background-color: gray;
+.main-section {
+  background-color: black;
+  width: 50%;
+  height: 100vh;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid-container{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  height: 400px;
+  width: 400px;
+  margin: 0;
+}
+
+.grid-item {
+  border: 4px solid black;
+  border-style: none dashed solid double;
+  text-align: center;
+}
+
+/* game board boxes */
+
+#one {
+  border-style: none solid solid none;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to left, #00C853, #B2FF59);
+}
+
+#two {
+  border-style: none solid solid solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to right, #00C853, #B2FF59);
+}
+
+#three {
+  border-style: none none solid solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to left, #00C853, #B2FF59);
+}
+
+#four {
+  border-style: solid solid solid none;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to left, #00C853, #B2FF59);
+}
+
+#five {
+  border-style: solid solid solid solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to right, #00C853, #B2FF59);
+}
+
+#six {
+  border-style: solid none solid solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to left, #00C853, #B2FF59);
+}
+
+#seven {
+  border-style: solid solid none none;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to left, #00C853, #B2FF59);
+}
+
+#eight {
+  border-style: solid solid none solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to right, #00C853, #B2FF59);
+}
+
+#nine {
+  border-style: solid none none solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to left, #00C853, #B2FF59);
 }
 
 h1 {
