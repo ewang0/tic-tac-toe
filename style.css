@@ -1,6 +1,7 @@
 main {
   display: flex;
   justify-content: space-between;
+  background-color: black;
 }
 
 body{
@@ -17,7 +18,8 @@ body{
 }
 
 .main-section {
-  background-color: black;
+  background-image: url("https://i.pinimg.com/originals/0b/59/34/0b5934b623f3c6f5377f221959d77982.gif");
+  background-size: cover;
   width: 50%;
   height: 100vh;
   display:flex;
@@ -27,16 +29,22 @@ body{
 
 .grid-container{
   display: grid;
-  grid-template-columns: auto auto auto;
-  height: 400px;
-  width: 400px;
-  margin: 0;
+  grid-template-columns: 150px 150px 150px;
+  grid-template-rows: 150px 150px 150px;
+  margin-top: 70px;
 }
 
 .grid-item {
   border: 4px solid black;
   border-style: none dashed solid double;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
 }
 
 /* game board boxes */
@@ -97,12 +105,20 @@ body{
 
 h1 {
   font-size: 7em;
-  margin-bottom: 0;
-  margin-top: 150px;
+  text-shadow: 0px 0px 10px cyan;
+}
+
+.red-outline {
+  font-size: 7em;
+  text-shadow: 0px 0px 10px red;
 }
 
 h2 {
   font-family: 'Space Mono', monospace;
   color: white;
   display: block;
+}
+
+img {
+  max-width: 100%;
 }
