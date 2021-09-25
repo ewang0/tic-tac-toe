@@ -15,9 +15,17 @@ class Game {
   }
 
   checkWin(){
-  }
-
-  inArray(){
-
+    var p1Board = this.board.p1.sort();
+    for(var i = 0; i < p1Board.length; i++){
+      if(p1Board.includes(p1Board[i]+1) && p1Board.includes(p1Board[i]+2)){
+        console.log('win');
+      } else if(p1Board.includes(p1Board[i]+2) && p1Board.includes(p1Board[i]+4)){
+        console.log('win');
+      } else if(p1Board.includes(p1Board[i]+3) && p1Board.includes(p1Board[i]+6)){
+        console.log('win');
+      } else if(p1Board.includes(p1Board[i]+4) && p1Board.includes(p1Board[i]+8)){
+        console.log('win');
+      }
+    }
   }
 }
