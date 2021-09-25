@@ -26,19 +26,17 @@ function getBoxID(event){
   var currentGame = games[games.length-1];
   if(currentGame.turn === 0){
     //show bad moon, add data to game.board, check win, change turn
-    event.target.firstElementChild.innerText = currentGame.p1.token;
     currentGame.board.p1.push(parseInt(event.target.id));
+    updateBoard();
     currentGame.checkWin();
     currentGame.changeTurn();
   } else if(currentGame.turn === 1){
     //show good moon, add data to game.board, check win, change turn
-    event.target.firstElementChild.innerText = currentGame.p2.token;
-    event.target.lastElementChild.classList.add('red-outline');
     currentGame.board.p2.push(parseInt(event.target.id));
+    updateBoard();
     currentGame.checkWin();
     currentGame.changeTurn();
   }
-
 }
 
 function updateDOM(){
@@ -50,5 +48,23 @@ function updateDOM(){
     playerTurn.innerText = `It\'s ${currentGame.p2.token}\'s turn`;
   }
   //update board
+}
+var gameTiles = document.querySelectorAll('grid-item');
 
+function updateBoard(){
+  var currentGame = games[games.length-1];
+  var p1Board = currentGame.board.p1;
+  var p2Board = currentGame.board.p2;
+  //var gameTiles = document.querySelectorAll('.grid-item');
+
+  for(var i = 0; i < p1Board.length; i++){
+    var gameTile = document.getElementById(`${p1Board[i]}`);
+    gameTile.firstElementChild.innerText = currentGame.p1.token;
+  }
+
+  for(var i = 0; i < p2Board.length; i++){
+    var gameTile = document.getElementById(`${p2Board[i]}`);
+    gameTile.firstElementChild.innerText = currentGame.p2.token;
+    gameTile.firstElementChild.classList.add('red-outline');
+  }
 }
