@@ -25,13 +25,13 @@ function newGame(){
 function getBoxID(event){
   var currentGame = games[games.length-1];
   if(currentGame.turn === 0){
-    //show bad moon, change turn
+    //show bad moon, add data to game.board, check win, change turn
     event.target.firstElementChild.innerText = currentGame.p1.token;
     currentGame.board.p1.push(parseInt(event.target.id));
     currentGame.checkWin();
     currentGame.changeTurn();
   } else if(currentGame.turn === 1){
-    //show good moon, change turn
+    //show good moon, add data to game.board, check win, change turn
     event.target.firstElementChild.innerText = currentGame.p2.token;
     event.target.lastElementChild.classList.add('red-outline');
     currentGame.board.p2.push(parseInt(event.target.id));
