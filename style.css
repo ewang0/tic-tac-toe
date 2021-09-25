@@ -9,12 +9,20 @@ body{
 }
 
 .player-column {
-  background-color: salmon;
+
   height: 100vh;
   width: 25%;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.player-turn {
+  font-family: 'Space Mono', monospace;
+  color: white;
+  font-size: 3em;
+  text-shadow: 0px 0px 10px blue;
+  margin-top: 0;
 }
 
 .main-section {
@@ -23,6 +31,7 @@ body{
   width: 50%;
   height: 100vh;
   display:flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -31,7 +40,6 @@ body{
   display: grid;
   grid-template-columns: 150px 150px 150px;
   grid-template-rows: 150px 150px 150px;
-  margin-top: 70px;
 }
 
 .grid-item {
@@ -49,55 +57,55 @@ body{
 
 /* game board boxes */
 
-#one {
+.one {
   border-style: none solid solid none;
   border-image-slice: 1;
   border-image-source: linear-gradient(to left, #00C853, #B2FF59);
 }
 
-#two {
+.two {
   border-style: none solid solid solid;
   border-image-slice: 1;
   border-image-source: linear-gradient(to right, #00C853, #B2FF59);
 }
 
-#three {
+.three {
   border-style: none none solid solid;
   border-image-slice: 1;
   border-image-source: linear-gradient(to left, #00C853, #B2FF59);
 }
 
-#four {
+.four {
   border-style: solid solid solid none;
   border-image-slice: 1;
   border-image-source: linear-gradient(to left, #00C853, #B2FF59);
 }
 
-#five {
+.five {
   border-style: solid solid solid solid;
   border-image-slice: 1;
   border-image-source: linear-gradient(to right, #00C853, #B2FF59);
 }
 
-#six {
+.six {
   border-style: solid none solid solid;
   border-image-slice: 1;
   border-image-source: linear-gradient(to left, #00C853, #B2FF59);
 }
 
-#seven {
+.seven {
   border-style: solid solid none none;
   border-image-slice: 1;
   border-image-source: linear-gradient(to left, #00C853, #B2FF59);
 }
 
-#eight {
+.eight {
   border-style: solid solid none solid;
   border-image-slice: 1;
   border-image-source: linear-gradient(to right, #00C853, #B2FF59);
 }
 
-#nine {
+.nine {
   border-style: solid none none solid;
   border-image-slice: 1;
   border-image-source: linear-gradient(to left, #00C853, #B2FF59);
