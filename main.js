@@ -10,7 +10,6 @@ var gameTiles = document.querySelectorAll('.grid-item');
 //event listeners
 grid.addEventListener('click', function(){
   getBoxID(event);
-  updateDOM();
 });
 window.addEventListener('load', newGame);
 
@@ -25,37 +24,44 @@ function newGame(){
 //event handler and helper functions
 function getBoxID(event){
   var currentGame = games[games.length-1];
+  var clickedTileID = parseInt(event.target.id);
+
   if(currentGame.turn === 0){
     //show bad moon, add data to game.board, check win, change turn
-      currentGame.board.p1.push(parseInt(event.target.id));
-      currentGame.cleanBoards();
+    if(Number.isInteger(clickedTileID)){
+      currentGame.board.p1.push(clickedTileID);
       updateBoard();
+    }
+
     if(currentGame.checkWin()){
       p1Score.innerText = `${currentGame.p1.wins.length} wins`;
       playerTurn.innerText = `${currentGame.p1.token} won!`;
       newGame();
       setTimeout(clear, 2000);
-      // updateBoard();
+      return;
     }
-    currentGame.changeTurn();
+    if(Number.isInteger(clickedTileID)){
+      currentGame.changeTurn();
+      updateDOM();
+    }
   } else if(currentGame.turn === 1){
     //show good moon, add data to game.board, check win, change turn
-      currentGame.board.p2.push(parseInt(event.target.id));
-      currentGame.cleanBoards();
+    if(Number.isInteger(clickedTileID)){
+      currentGame.board.p2.push(clickedTileID);
       updateBoard();
+    }
     if(currentGame.checkWin()){
       p2Score.innerText = `${currentGame.p2.wins.length} wins`;
       playerTurn.innerText = `${currentGame.p2.token} won!`;
       newGame();
       setTimeout(clear, 2000);
-      //updateBoard();
+      return;
     };
-    currentGame.changeTurn();
+    if(Number.isInteger(clickedTileID)){
+      currentGame.changeTurn();
+      updateDOM();
+    }
   }
-}
-
-function playerWon(playerToken){
-  playerTurn.innerText = playerToken;
 }
 
 function updateDOM(){
@@ -65,10 +71,7 @@ function updateDOM(){
     playerTurn.innerText = `It\'s ${currentGame.p1.token}\'s turn`;
   } else if(currentGame.turn === 1){
     playerTurn.innerText = `It\'s ${currentGame.p2.token}\'s turn`;
-  } else{
-
   }
-  //update board
 }
 
 
@@ -92,7 +95,6 @@ function updateBoard(){
 
 function clear(){
   console.log('clearing now');
-
   for(var i = 0; i < gameTiles.length; i++){
     gameTiles[i].firstElementChild.innerText = '';
     gameTiles[i].firstElementChild.classList.remove('red-outline');

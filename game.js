@@ -14,22 +14,6 @@ class Game {
     }
   }
 
-  cleanBoards(){
-    var p1Board = this.board.p1;
-    var p2Board = this.board.p2;
-
-    for(var i = 0; i < p1Board.length; i++){
-      if(isNaN(p1Board[i])){
-        p1Board.splice(i,1);
-      }
-    }
-    for(var i = 0; i < p2Board.length; i++){
-      if(isNaN(p2Board[i])){
-        p2Board.splice(i,1);
-      }
-    }
-  }
-
   checkWin(){
     var p1Board = this.board.p1.sort();
     var p2Board = this.board.p2.sort();
