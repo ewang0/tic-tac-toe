@@ -29,8 +29,9 @@ function getBoxID(event){
     currentGame.board.p1.push(parseInt(event.target.id));
     updateBoard();
     if(currentGame.checkWin()){
-      p1Score.innerText = `${currentGame.p1.wins} wins`;
+      p1Score.innerText = `${currentGame.p1.wins.length} wins`;
       newGame();
+      updateBoard();
     }
     currentGame.changeTurn();
   } else if(currentGame.turn === 1){
@@ -38,8 +39,9 @@ function getBoxID(event){
     currentGame.board.p2.push(parseInt(event.target.id));
     updateBoard();
     if(currentGame.checkWin()){
-      p2Score.innerText = `${currentGame.p2.wins} wins`;
+      p2Score.innerText = `${currentGame.p2.wins.length} wins`;
       newGame();
+      updateBoard();
     };
     currentGame.changeTurn();
   }
@@ -67,7 +69,7 @@ function updateBoard(){
     var gameTile = document.getElementById(`${p1Board[i]}`);
     gameTile.firstElementChild.innerText = currentGame.p1.token;
   }
-
+  
   for(var i = 0; i < p2Board.length; i++){
     var gameTile = document.getElementById(`${p2Board[i]}`);
     gameTile.firstElementChild.innerText = currentGame.p2.token;

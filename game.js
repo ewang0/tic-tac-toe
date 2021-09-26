@@ -21,19 +21,19 @@ class Game {
     for(var i = 0; i < p1Board.length; i++){
       if((p1Board[i] === 1 || p1Board[i] === 4 || p1Board[i] === 7) && p1Board.includes(p1Board[i]+1) && p1Board.includes(p1Board[i]+2)){
         console.log('win');
-        this.p1.wins++;
+        this.p1.wins.push(this);
         return true;
     } else if(p1Board[i] === 3 && p1Board.includes(p1Board[i]+2) && p1Board.includes(p1Board[i]+4)){
         console.log('win');
-        this.p1.wins++;
+        this.p1.wins.push(this);
         return true;
       } else if(p1Board.includes(p1Board[i]+3) && p1Board.includes(p1Board[i]+6)){
         console.log('win');
-        this.p1.wins++;
+        this.p1.wins.push(this);
         return true;
       } else if(p1Board.includes(p1Board[i]+4) && p1Board.includes(p1Board[i]+8)){
         console.log('win');
-        this.p1.wins++;
+        this.p1.wins.push(this);
         return true;
       }
     }
@@ -41,23 +41,21 @@ class Game {
     for(var i = 0; i < p2Board.length; i++){
       if((p2Board[i] === 1 || p2Board[i] ===  4 || p2Board[i] === 7) && p2Board.includes(p2Board[i]+1) && p2Board.includes(p2Board[i]+2)){
         console.log('win');
+        this.p2.wins.push(this);
         return true;
-        this.p2.wins++;
     } else if(p2Board[i] === 3 && p2Board.includes(p2Board[i]+2) && p2Board.includes(p2Board[i]+4)){
         console.log('win');
-        this.p2.wins++;
+        this.p2.wins.push(this);
         return true;
       } else if(p2Board.includes(p2Board[i]+3) && p2Board.includes(p2Board[i]+6)){
         console.log('win');
-        this.p2.wins++;
+        this.p2.wins.puhs(this);
         return true;
       } else if(p2Board.includes(p2Board[i]+4) && p2Board.includes(p2Board[i]+8)){
         console.log('win');
-        this.p2.wins++;
+        this.p2.wins.push(this);
         return true;
       }
     }
-
-
   }
 }
