@@ -31,7 +31,8 @@ function getBoxID(event){
     if(currentGame.checkWin()){
       p1Score.innerText = `${currentGame.p1.wins.length} wins`;
       newGame();
-      updateBoard();
+      setTimeout(clear, 2000);
+      // updateBoard();
     }
     currentGame.changeTurn();
   } else if(currentGame.turn === 1){
@@ -41,7 +42,8 @@ function getBoxID(event){
     if(currentGame.checkWin()){
       p2Score.innerText = `${currentGame.p2.wins.length} wins`;
       newGame();
-      updateBoard();
+      setTimeout(clear, 2000);
+      //updateBoard();
     };
     currentGame.changeTurn();
   }
@@ -57,7 +59,7 @@ function updateDOM(){
   }
   //update board
 }
-var gameTiles = document.querySelectorAll('grid-item');
+var gameTiles = document.querySelectorAll('.grid-item');
 
 function updateBoard(){
   var currentGame = games[games.length-1];
@@ -69,10 +71,18 @@ function updateBoard(){
     var gameTile = document.getElementById(`${p1Board[i]}`);
     gameTile.firstElementChild.innerText = currentGame.p1.token;
   }
-  
+
   for(var i = 0; i < p2Board.length; i++){
     var gameTile = document.getElementById(`${p2Board[i]}`);
     gameTile.firstElementChild.innerText = currentGame.p2.token;
     gameTile.firstElementChild.classList.add('red-outline');
+  }
+}
+
+function clear(){
+  console.log('clearing now');
+  for(var i = 0; i < gameTiles.length; i++){
+    gameTiles[i].firstElementChild.innerText = '';
+    gameTiles[i].firstElementChild.classList.remove('red-outline');
   }
 }

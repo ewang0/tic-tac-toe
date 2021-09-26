@@ -49,7 +49,7 @@ class Game {
         return true;
       } else if(p2Board.includes(p2Board[i]+3) && p2Board.includes(p2Board[i]+6)){
         console.log('win');
-        this.p2.wins.puhs(this);
+        this.p2.wins.push(this);
         return true;
       } else if(p2Board.includes(p2Board[i]+4) && p2Board.includes(p2Board[i]+8)){
         console.log('win');
