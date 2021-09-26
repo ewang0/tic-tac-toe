@@ -28,13 +28,19 @@ function getBoxID(event){
     //show bad moon, add data to game.board, check win, change turn
     currentGame.board.p1.push(parseInt(event.target.id));
     updateBoard();
-    currentGame.checkWin();
+    if(currentGame.checkWin()){
+      p1Score.innerText = `${currentGame.p1.wins} wins`;
+      newGame();
+    }
     currentGame.changeTurn();
   } else if(currentGame.turn === 1){
     //show good moon, add data to game.board, check win, change turn
     currentGame.board.p2.push(parseInt(event.target.id));
     updateBoard();
-    currentGame.checkWin();
+    if(currentGame.checkWin()){
+      p2Score.innerText = `${currentGame.p2.wins} wins`;
+      newGame();
+    };
     currentGame.changeTurn();
   }
 }
