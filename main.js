@@ -11,12 +11,16 @@ var gameTiles = document.querySelectorAll('.grid-item');
 grid.addEventListener('click', function(){
   getBoxID(event);
 });
-window.addEventListener('load', newGame);
+
+window.addEventListener('load', function(){
+  newGame();
+  window.localStorage.clear();
+});
 
 function newGame(){
   //new game on page load
-  var p1 = new Player(1, '🌚');
-  var p2 = new Player(2, '🌝');
+  var p1 = new Player('🌚');
+  var p2 = new Player('🌝');
   var game = new Game(p1, p2);
   games.push(game);
 }
@@ -34,8 +38,10 @@ function getBoxID(event){
     }
 
     if(currentGame.checkWin()){
-      p1Score.innerText = `${currentGame.p1.wins.length} wins`;
+
       playerTurn.innerText = `${currentGame.p1.token} won!`;
+      currentGame.p1.saveWinsToStorage();
+      p1Score.innerText = `${currentGame.p1.retrieveWinsFromStorage().length} wins`;
       newGame();
       setTimeout(clear, 2000);
       return;
@@ -59,8 +65,9 @@ function getBoxID(event){
       updateBoard();
     }
     if(currentGame.checkWin()){
-      p2Score.innerText = `${currentGame.p2.wins.length} wins`;
       playerTurn.innerText = `${currentGame.p2.token} won!`;
+      currentGame.p2.saveWinsToStorage();
+      p2Score.innerText = `${currentGame.p2.retrieveWinsFromStorage().length} wins`;
       newGame();
       setTimeout(clear, 2000);
       return;
