@@ -40,7 +40,15 @@ function getBoxID(event){
       setTimeout(clear, 2000);
       return;
     }
+    if(currentGame.checkDraw()){
+      playerTurn.innerText = 'It\'s a draw!';
+      newGame();
+      setTimeout(clear, 2000);
+      return;
+    }
+
     if(Number.isInteger(clickedTileID)){
+      currentGame.checkDraw()
       currentGame.changeTurn();
       updateDOM();
     }
@@ -57,7 +65,14 @@ function getBoxID(event){
       setTimeout(clear, 2000);
       return;
     };
+    if(currentGame.checkDraw()){
+      playerTurn.innerText = 'It\'s a draw!';
+      newGame();
+      setTimeout(clear, 2000);
+      return;
+    }
     if(Number.isInteger(clickedTileID)){
+      currentGame.checkDraw();
       currentGame.changeTurn();
       updateDOM();
     }
@@ -95,6 +110,7 @@ function updateBoard(){
 
 function clear(){
   console.log('clearing now');
+  playerTurn.innerText = '';
   for(var i = 0; i < gameTiles.length; i++){
     gameTiles[i].firstElementChild.innerText = '';
     gameTiles[i].firstElementChild.classList.remove('red-outline');

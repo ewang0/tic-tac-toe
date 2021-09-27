@@ -14,6 +14,17 @@ class Game {
     }
   }
 
+  checkDraw(){
+    var p1Board = this.board.p1;
+    var p2Board = this.board.p2;
+    var tilesFilled = (p1Board.length + p2Board.length === 9);
+    console.log(p1Board.length + p2Board.length);
+    if(tilesFilled){
+      console.log('tiles are filled!');
+      return true;
+    }
+  }
+
   checkWin(){
     var p1Board = this.board.p1.sort();
     var p2Board = this.board.p2.sort();
