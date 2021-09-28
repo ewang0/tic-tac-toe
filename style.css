@@ -33,6 +33,7 @@ body{
 
 .highlight{
   background: rgba(152, 251, 152, .2);
+  cursor:pointer;
 
 }
 .player-turn {

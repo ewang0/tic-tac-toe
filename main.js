@@ -16,11 +16,11 @@ grid.addEventListener('click', function(){
 window.addEventListener('load', function(){
   newGame();
   window.localStorage.clear();
-  setTimeout(welcome, 4000);
+  setTimeout(welcome, 3000);
+  freeze();
 });
 
 function newGame(){
-  //new game on page load
   var p1 = new Player('🌚');
   var p2 = new Player('🌝');
   var game = new Game(p1, p2);
@@ -33,63 +33,56 @@ function getBoxID(event){
   var clickedTileID = parseInt(event.target.id);
 
   if(currentGame.turn === 0){
-    //show bad moon, add data to game.board, check win, change turn
-    if(Number.isInteger(clickedTileID)){
-      currentGame.board.p1.push(clickedTileID);
-      updateBoard();
-    }
-
-    if(currentGame.checkWin()){
-      playerTurn.innerText = `${currentGame.p1.token} won!`;
-      currentGame.p1.saveWinsToStorage();
-      p1Score.innerText = `${currentGame.p1.retrieveWinsFromStorage().length} wins`;
-      newGame();
-      setTimeout(reset, 2000);
-      return;
-    }
-    if(currentGame.checkDraw()){
-      playerTurn.innerText = 'It\'s a draw!';
-      newGame();
-      setTimeout(reset, 2000);
-      return;
-    }
-
-    if(Number.isInteger(clickedTileID)){
-      currentGame.checkDraw()
-      currentGame.changeTurn();
-      updateDOM();
-    }
+    addMove(clickedTileID, currentGame.board.p1);
+    checkWinOrDraw(currentGame.p1);
   } else if(currentGame.turn === 1){
-    //show good moon, add data to game.board, check win, change turn
-    if(Number.isInteger(clickedTileID)){
-      currentGame.board.p2.push(clickedTileID);
-      updateBoard();
-    }
-    if(currentGame.checkWin()){
-      playerTurn.innerText = `${currentGame.p2.token} won!`;
-      currentGame.p2.saveWinsToStorage();
-      p2Score.innerText = `${currentGame.p2.retrieveWinsFromStorage().length} wins`;
-      newGame();
-      setTimeout(reset, 2000);
-      return;
-    };
-    if(currentGame.checkDraw()){
-      playerTurn.innerText = 'It\'s a draw!';
-      newGame();
-      setTimeout(reset, 2000);
-      return;
-    }
-    if(Number.isInteger(clickedTileID)){
-      currentGame.checkDraw();
-      currentGame.changeTurn();
-      updateDOM();
-    }
+    addMove(clickedTileID, currentGame.board.p2);
+    checkWinOrDraw(currentGame.p2);
   }
 }
 
-function updateDOM(){
+function addMove(tile, playerBoard){
+  if(Number.isInteger(tile)){
+    playerBoard.push(tile);
+    displayBoard();
+  }
+}
+
+function checkWinOrDraw(currentPlayer){
   var currentGame = games[games.length-1];
-  //update player turn
+  var clickedTileID = parseInt(event.target.id);
+
+  if(currentGame.checkWin()){
+    playerTurn.innerText = `${currentPlayer.token} won!`;
+    currentPlayer.saveWinsToStorage();
+    displayWins()
+    newGame();
+    setTimeout(reset, 2000);
+    return;
+  }
+  if(currentGame.checkDraw()){
+    playerTurn.innerText = 'It\'s a draw!';
+    newGame();
+    setTimeout(reset, 2000);
+    return;
+  }
+  if(Number.isInteger(clickedTileID)){
+    currentGame.checkDraw()
+    currentGame.changeTurn();
+    displayTurn();
+  }
+}
+
+function displayWins(){
+  var currentGame = games[games.length-1];
+
+  p1Score.innerText = `${currentGame.p1.retrieveWinsFromStorage().length} wins`;
+  p2Score.innerText = `${currentGame.p2.retrieveWinsFromStorage().length} wins`;
+}
+
+function displayTurn(){
+  var currentGame = games[games.length-1];
+
   if(currentGame.turn === 0){
     playerTurn.innerText = `${currentGame.p1.token}\'s turn`;
   } else if(currentGame.turn === 1){
@@ -98,11 +91,10 @@ function updateDOM(){
 }
 
 
-function updateBoard(){
+function displayBoard(){
   var currentGame = games[games.length-1];
   var p1Board = currentGame.board.p1;
   var p2Board = currentGame.board.p2;
-  //var gameTiles = document.querySelectorAll('.grid-item');
 
   for(var i = 0; i < p1Board.length; i++){
     var gameTile = document.getElementById(`${p1Board[i]}`);
@@ -117,9 +109,9 @@ function updateBoard(){
 }
 
 function reset(){
-  console.log('resetting now');
   var previousGame = games[games.length-2];
   var currentGame = games[games.length-1]
+
   if(previousGame.p1.wins.length > previousGame.p2.wins.length){
     currentGame.turn = 0;
     playerTurn.innerText = `${previousGame.p1.token}'s turn`;
@@ -133,6 +125,7 @@ function reset(){
     gameTiles[i].firstElementChild.classList.remove('red-outline');
   }
 }
+
 function highlight(event){
   var currentGame = games[games.length-1];
   if(currentGame.turn == 0 && !event.target.firstElementChild.innerText){
@@ -143,12 +136,17 @@ function highlight(event){
 }
 
 function removeHighlight(event){
-event.target.classList.remove('highlight')
+  event.target.classList.remove('highlight')
 }
+
+function freeze(){
+  grid.style = 'pointer-events:none';
+}
+
 function welcome(){
   var currentGame = games[games.length-1];
 
   playerTurn.innerText = 'randomizing turn...';
   currentGame.turn = Math.floor(Math.random() * 2);
-  setTimeout(updateDOM, 2000);
+  setTimeout(displayTurn, 1500);
 }
