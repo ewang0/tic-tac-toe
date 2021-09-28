@@ -38,18 +38,17 @@ function getBoxID(event){
     }
 
     if(currentGame.checkWin()){
-
       playerTurn.innerText = `${currentGame.p1.token} won!`;
       currentGame.p1.saveWinsToStorage();
       p1Score.innerText = `${currentGame.p1.retrieveWinsFromStorage().length} wins`;
       newGame();
-      setTimeout(clear, 2000);
+      setTimeout(reset, 2000);
       return;
     }
     if(currentGame.checkDraw()){
       playerTurn.innerText = 'It\'s a draw!';
       newGame();
-      setTimeout(clear, 2000);
+      setTimeout(reset, 2000);
       return;
     }
 
@@ -69,13 +68,13 @@ function getBoxID(event){
       currentGame.p2.saveWinsToStorage();
       p2Score.innerText = `${currentGame.p2.retrieveWinsFromStorage().length} wins`;
       newGame();
-      setTimeout(clear, 2000);
+      setTimeout(reset, 2000);
       return;
     };
     if(currentGame.checkDraw()){
       playerTurn.innerText = 'It\'s a draw!';
       newGame();
-      setTimeout(clear, 2000);
+      setTimeout(reset, 2000);
       return;
     }
     if(Number.isInteger(clickedTileID)){
@@ -90,9 +89,9 @@ function updateDOM(){
   var currentGame = games[games.length-1];
   //update player turn
   if(currentGame.turn === 0){
-    playerTurn.innerText = `It\'s ${currentGame.p1.token}\'s turn`;
+    playerTurn.innerText = `${currentGame.p1.token}\'s turn`;
   } else if(currentGame.turn === 1){
-    playerTurn.innerText = `It\'s ${currentGame.p2.token}\'s turn`;
+    playerTurn.innerText = `${currentGame.p2.token}\'s turn`;
   }
 }
 
@@ -115,9 +114,15 @@ function updateBoard(){
   }
 }
 
-function clear(){
-  console.log('clearing now');
-  playerTurn.innerText = '';
+function reset(){
+  console.log('resetting now');
+  var previousGame = games[games.length-2];
+  if(previousGame.p1.wins.length > previousGame.p2.wins.length){
+    playerTurn.innerText = `${previousGame.p1.token}'s turn`;
+  } else{
+    playerTurn.innerText = `${previousGame.p2.token}'s turn`;
+  }
+
   for(var i = 0; i < gameTiles.length; i++){
     gameTiles[i].firstElementChild.innerText = '';
     gameTiles[i].firstElementChild.classList.remove('red-outline');

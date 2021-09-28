@@ -9,20 +9,20 @@ body{
 }
 
 .player-column {
-
   height: 100vh;
   width: 25%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 150px;
 }
 
 .player-turn {
   font-family: 'Space Mono', monospace;
   color: white;
   font-size: 3em;
-  text-shadow: 0px 0px 10px blue;
-  margin-top: 0;
+  text-shadow: 0px 0px 5px yellow;
+  margin: 0;
 }
 
 .main-section {
@@ -49,6 +49,14 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.large-container {
+  background: rgba(43, 54, 132, .6);
+  border-radius: 100px;
+  padding: 20px 50px 20px 50px;
+  margin-bottom: 60px;
+  text-align: center;
 }
 
 .hidden {
@@ -114,6 +122,7 @@ body{
 h1 {
   font-size: 7em;
   text-shadow: 0px 0px 10px cyan;
+  margin: 0;
 }
 
 .red-outline {
