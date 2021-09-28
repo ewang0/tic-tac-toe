@@ -15,6 +15,7 @@ grid.addEventListener('click', function(){
 window.addEventListener('load', function(){
   newGame();
   window.localStorage.clear();
+  setTimeout(welcome, 4000);
 });
 
 function newGame(){
@@ -117,9 +118,12 @@ function updateBoard(){
 function reset(){
   console.log('resetting now');
   var previousGame = games[games.length-2];
+  var currentGame = games[games.length-1]
   if(previousGame.p1.wins.length > previousGame.p2.wins.length){
+    currentGame.turn = 0;
     playerTurn.innerText = `${previousGame.p1.token}'s turn`;
   } else{
+    currentGame.turn = 1;
     playerTurn.innerText = `${previousGame.p2.token}'s turn`;
   }
 
@@ -127,4 +131,11 @@ function reset(){
     gameTiles[i].firstElementChild.innerText = '';
     gameTiles[i].firstElementChild.classList.remove('red-outline');
   }
+}
+function welcome(){
+  var currentGame = games[games.length-1];
+
+  playerTurn.innerText = 'randomizing turn...';
+  currentGame.turn = Math.floor(Math.random() * 2);
+  setTimeout(updateDOM, 2000);
 }
