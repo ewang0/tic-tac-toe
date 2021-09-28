@@ -11,7 +11,7 @@ var gameTiles = document.querySelectorAll('.grid-item');
 grid.addEventListener('mouseover', highlight);
 grid.addEventListener('mouseout', removeHighlight);
 grid.addEventListener('click', function(){
-  getBoxID(event);
+  makeMove(event);
 });
 window.addEventListener('load', function(){
   newGame();
@@ -28,7 +28,7 @@ function newGame(){
 }
 
 //event handler and helper functions
-function getBoxID(event){
+function makeMove(event){
   var currentGame = games[games.length-1];
   var clickedTileID = parseInt(event.target.id);
 
@@ -94,7 +94,6 @@ function displayTurn(){
   }
 }
 
-
 function displayBoard(){
   var currentGame = games[games.length-1];
   var p1Board = currentGame.board.p1;
@@ -104,7 +103,6 @@ function displayBoard(){
     var gameTile = document.getElementById(`${p1Board[i]}`);
     gameTile.firstElementChild.innerText = currentGame.p1.token;
   }
-
   for(var i = 0; i < p2Board.length; i++){
     var gameTile = document.getElementById(`${p2Board[i]}`);
     gameTile.firstElementChild.innerText = currentGame.p2.token;
@@ -125,18 +123,25 @@ function reset(){
     playerTurn.innerText = `${previousGame.p2.token}'s turn`;
     unfreeze();
   }
-
   for(var i = 0; i < gameTiles.length; i++){
     gameTiles[i].firstElementChild.innerText = '';
     gameTiles[i].firstElementChild.classList.remove('red-outline');
   }
 }
 
+function welcome(){
+  var currentGame = games[games.length-1];
+
+  playerTurn.innerText = 'randomizing...';
+  currentGame.turn = Math.floor(Math.random() * 2);
+  setTimeout(displayTurn, 1500);
+}
+
 function highlight(event){
   var currentGame = games[games.length-1];
-  if(currentGame.turn == 0 && !event.target.firstElementChild.innerText){
+  if(currentGame.turn == 0 && !(event.target.firstElementChild.innerText)){
     event.target.classList.add('highlight');
-  } else if(currentGame.turn == 1 && !event.target.firstElementChild.innerText){
+  } else if(currentGame.turn == 1 && !(event.target.firstElementChild.innerText)){
     event.target.classList.add('highlight');
   }
 }
@@ -151,12 +156,4 @@ function freeze(){
 
 function unfreeze(){
   grid.classList.remove('freeze');
-}
-
-function welcome(){
-  var currentGame = games[games.length-1];
-
-  playerTurn.innerText = 'randomizing turn...';
-  currentGame.turn = Math.floor(Math.random() * 2);
-  setTimeout(displayTurn, 1500);
 }
