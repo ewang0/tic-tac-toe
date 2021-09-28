@@ -31,6 +31,10 @@ body{
   background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(134,50,24,1) 60%, rgba(255,129,2,1) 100%);
 }
 
+.highlight{
+  background: rgba(152, 251, 152, .2);
+
+}
 .player-turn {
   font-family: 'Space Mono', monospace;
   color: white;
