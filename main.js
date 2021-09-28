@@ -6,6 +6,7 @@ var p1Score = document.querySelector('#p1Score');
 var p2Score = document.querySelector('#p2Score');
 var playerTurn = document.querySelector('#playerTurn');
 var gameTiles = document.querySelectorAll('.grid-item');
+var resetButton = document.querySelector('#resetGame');
 
 //event listeners
 grid.addEventListener('mouseover', highlight);
@@ -19,6 +20,7 @@ window.addEventListener('load', function(){
   setTimeout(welcome, 3000);
   freeze();
 });
+resetButton.addEventListener('click', refresh);
 
 function newGame(){
   var p1 = new Player('🌚');
@@ -156,4 +158,8 @@ function freeze(){
 
 function unfreeze(){
   grid.classList.remove('freeze');
+}
+
+function refresh(){
+  window.location.reload();
 }

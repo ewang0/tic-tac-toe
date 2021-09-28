@@ -7,7 +7,26 @@ main {
 body{
   margin: 0px;
 }
+.reset-game {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
 
+button{
+  font-family: 'Space Mono', monospace;
+  text-align: center;
+  background-color: Cornsilk;
+  margin-top: 40px;
+  height: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+  cursor: pointer;
+}
+
+button:hover{
+  background-color: pink;
+}
 .player-column {
   font-family: 'Space Mono', monospace;
   text-align: center;
@@ -83,7 +102,7 @@ body{
   background: rgba(43, 54, 132, .6);
   border-radius: 100px;
   padding: 20px 50px 20px 50px;
-  margin-bottom: 60px;
+  margin-bottom: 50px;
   text-align: center;
 }
 
