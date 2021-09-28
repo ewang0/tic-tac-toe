@@ -26,17 +26,17 @@ body{
   animation: levitate 2.5s ease-in-out infinite;
 }
 
-.p2{
+.p2 {
   background: rgb(0,0,0);
   background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(134,50,24,1) 60%, rgba(255,129,2,1) 100%);
 }
 
-.highlight{
+.highlight {
   background: rgba(152, 251, 152, .2);
   cursor:pointer;
 }
 
-.freeze{
+.freeze {
   pointer-events: none;
 }
 
@@ -64,7 +64,7 @@ body{
   align-items: center;
 }
 
-.grid-container{
+.grid-container {
   display: grid;
   grid-template-columns: 150px 150px 150px;
   grid-template-rows: 150px 150px 150px;
@@ -79,7 +79,7 @@ body{
   align-items: center;
 }
 
-.large-container {
+.container {
   background: rgba(43, 54, 132, .6);
   border-radius: 100px;
   padding: 20px 50px 20px 50px;
@@ -97,8 +97,31 @@ body{
   display: none;
 }
 
-/* game board boxes */
+h1 {
+  font-size: 7em;
+  text-shadow: 0px 0px 10px cyan;
+  margin: 0;
+}
 
+.player-name {
+  font-size: 3em;
+  margin: 20px;
+}
+
+.red-outline {
+  text-shadow: 0px 0px 10px red;
+}
+
+h2 {
+  color: white;
+  display: block;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* game board boxes */
 .one {
   border-style: none solid solid none;
   border-image-slice: 1;
@@ -153,31 +176,8 @@ body{
   border-image-source: linear-gradient(to left, #00C853, #B2FF59);
 }
 
-h1 {
-  font-size: 7em;
-  /* letter-spacing: 5px; */
-  text-shadow: 0px 0px 10px cyan;
-  margin: 0;
-}
 
-.player-name{
-  font-size: 3em;
-  margin: 20px;
-}
-
-.red-outline {
-  text-shadow: 0px 0px 10px red;
-}
-
-h2 {
-  color: white;
-  display: block;
-}
-
-img {
-  max-width: 100%;
-}
-
+/* animation keyframes */
 @keyframes levitate{
   0% {
     transform: translateY(0px);
@@ -194,6 +194,7 @@ img {
   from {width:0}
   to {width: 100%}
 }
+
 @keyframes blinker {
   from, to {border-color:transparent}
   50% {border-color: gold;}
