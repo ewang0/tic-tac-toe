@@ -8,10 +8,11 @@ var playerTurn = document.querySelector('#playerTurn');
 var gameTiles = document.querySelectorAll('.grid-item');
 
 //event listeners
+grid.addEventListener('mouseover', highlight);
+grid.addEventListener('mouseout', removeHighlight);
 grid.addEventListener('click', function(){
   getBoxID(event);
 });
-
 window.addEventListener('load', function(){
   newGame();
   window.localStorage.clear();
@@ -131,6 +132,18 @@ function reset(){
     gameTiles[i].firstElementChild.innerText = '';
     gameTiles[i].firstElementChild.classList.remove('red-outline');
   }
+}
+function highlight(event){
+  var currentGame = games[games.length-1];
+  if(currentGame.turn == 0 && !event.target.firstElementChild.innerText){
+    event.target.classList.add('highlight');
+  } else if(currentGame.turn == 1 && !event.target.firstElementChild.innerText){
+    event.target.classList.add('highlight');
+  }
+}
+
+function removeHighlight(event){
+event.target.classList.remove('highlight')
 }
 function welcome(){
   var currentGame = games[games.length-1];
