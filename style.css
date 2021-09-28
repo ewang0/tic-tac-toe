@@ -34,8 +34,12 @@ body{
 .highlight{
   background: rgba(152, 251, 152, .2);
   cursor:pointer;
-
 }
+
+.freeze{
+  pointer-events: none;
+}
+
 .player-turn {
   font-family: 'Space Mono', monospace;
   color: white;

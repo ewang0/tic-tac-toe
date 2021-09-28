@@ -57,12 +57,14 @@ function checkWinOrDraw(currentPlayer){
     currentPlayer.saveWinsToStorage();
     displayWins()
     newGame();
+    freeze();
     setTimeout(reset, 2000);
     return;
   }
   if(currentGame.checkDraw()){
     playerTurn.innerText = 'It\'s a draw!';
     newGame();
+    freeze();
     setTimeout(reset, 2000);
     return;
   }
@@ -85,8 +87,10 @@ function displayTurn(){
 
   if(currentGame.turn === 0){
     playerTurn.innerText = `${currentGame.p1.token}\'s turn`;
+    unfreeze();
   } else if(currentGame.turn === 1){
     playerTurn.innerText = `${currentGame.p2.token}\'s turn`;
+    unfreeze();
   }
 }
 
@@ -115,9 +119,11 @@ function reset(){
   if(previousGame.p1.wins.length > previousGame.p2.wins.length){
     currentGame.turn = 0;
     playerTurn.innerText = `${previousGame.p1.token}'s turn`;
+    unfreeze();
   } else{
     currentGame.turn = 1;
     playerTurn.innerText = `${previousGame.p2.token}'s turn`;
+    unfreeze();
   }
 
   for(var i = 0; i < gameTiles.length; i++){
@@ -140,7 +146,11 @@ function removeHighlight(event){
 }
 
 function freeze(){
-  grid.style = 'pointer-events:none';
+  grid.classList.add('freeze');
+}
+
+function unfreeze(){
+  grid.classList.remove('freeze');
 }
 
 function welcome(){
