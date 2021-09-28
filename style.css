@@ -7,6 +7,7 @@ main {
 body{
   margin: 0px;
 }
+
 .reset-game {
   display: flex;
   justify-content: flex-end;
