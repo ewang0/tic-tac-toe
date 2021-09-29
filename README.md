@@ -5,9 +5,7 @@
 ## Contents
 1. [Overview and Goals](#overview-and-goals)
 1. [Technologies](#technologies)
-1. [Features](#features)
-1. [Challenges](#challenges)
-1. [Wins](#wins)
+1. [Project Demo](#demo)
 ---
 
 ## Overview
@@ -33,6 +31,7 @@ Some personal goals that I also wanted to include:
 - Use good git-based workflow with consistent use of PR templates
 - Build all the basic functionality, and attempt some stretch goals like:
   - Extra features beyond the project spec
+  - Extra styling
   - CSS animations
 
 ---
@@ -44,6 +43,8 @@ Some personal goals that I also wanted to include:
   - JavaScript
   - JSON-based local storage
   - Git
+
+## Demo
 
 
  > [Back to the top](#Space-Attack-Toe)
