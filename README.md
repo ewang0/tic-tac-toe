@@ -1,8 +1,7 @@
 # Space-Attack-Toe
 
-> A [5-Day Solo Project] by Eric Wang
+> A 5-Day Solo Project by Eric Wang
 
----
 ## Contents
 1. [Overview and Goals](#overview-and-goals)
 1. [Technologies](#technologies)
