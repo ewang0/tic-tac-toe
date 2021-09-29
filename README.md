@@ -2,6 +2,8 @@
 
 > A 5-Day Solo Project by Eric Wang
 
+<img width="600" alt="Screen Shot 2021-09-28 at 9 51 22 PM" src="https://user-images.githubusercontent.com/87143658/135190184-dc9842d3-9f3e-497f-8094-3f8291b66fae.png">
+
 ## Contents
 1. [Overview and Goals](#overview-and-goals)
 1. [Technologies](#technologies)
@@ -10,7 +12,7 @@
 
 ## Overview
 
-Hi there! I'm a Module 1 Front-End student at the Turing School of Software and Design. Tic-Tac-Toe was the capstone project to end my first 6 weeks of learning how to code in Javascript, HTML, and CSS. The idea of building out the game from scratch was daunting at first, but one that also excited me--I couldn't wait to show off everything I had learned over the past 6 weeks.
+Hi there! I'm a Module 1 Front-End student at the Turing School of Software and Design. Tic-Tac-Toe was the capstone project to end our first 6 weeks of learning how to code in Javascript, HTML, and CSS. The idea of building out the game from scratch was daunting at first, but one that also excited me--I couldn't wait to show off everything I had learned over the past 6 weeks.
 
 ## Goals
 
@@ -46,5 +48,6 @@ Some personal goals that I also wanted to include:
 
 ## Demo
 
+[Link to Demo]
 
  > [Back to the top](#Space-Attack-Toe)
