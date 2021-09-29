@@ -48,6 +48,7 @@ Some personal goals that I also wanted to include:
 
 ## Demo
 
-[Link to Demo]
+[Link to Demo](https://ewang0.github.io/tic-tac-toe/)
+
 
  > [Back to the top](#Space-Attack-Toe)
